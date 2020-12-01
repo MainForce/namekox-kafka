@@ -17,7 +17,7 @@ class KafkaProducer(BaseKafkaProducer):
 
     def send(self, topic, value=None, key=None, headers=None, partition=None, timestamp_ms=None):
         headers = headers or []
-        _header = gen_message_headers(self.context.context) if self.context else {}
+        _header = gen_message_headers(self.context.data) if self.context else {}
         headers.extend([(k, v) for k, v in six.iteritems(_header) if (k, v) not in headers])
         return super(KafkaProducer, self).send(topic, value=value, key=key, headers=headers, partition=partition, timestamp_ms=timestamp_ms)
 
