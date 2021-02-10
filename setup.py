@@ -11,11 +11,11 @@ from setuptools import find_packages, setup
 
 
 curdir = os.path.abspath(os.path.dirname(__file__))
-readme = open(os.path.join(curdir, 'README.md'), 'rb', 'utf-8').read()
+readme = open(os.path.join(curdir, 'READIT.md'), 'rb', 'utf-8').read()
 
 setup(
     name='namekox-kafka',
-    version='0.0.2',
+    version='0.0.3',
     description='namekox kafka',
     long_description_content_type='text/markdown',
     long_description=readme,
