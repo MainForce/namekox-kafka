@@ -23,5 +23,8 @@ def get_message_headers(message):
     headers = {}
     for k, v in message.headers:
         p = '{}-'.format(DEFAULT_KAFKA_H_PREFIX)
-        k.startswith(p) and headers.update({k[len(p):]: anyjson.deserialize(v)})
+        if not k.lower().startswith(p):
+            continue
+        k = k.lower()[len(p):].replace('-', '_')
+        headers.update({k: anyjson.deserialize(v)})
     return headers
